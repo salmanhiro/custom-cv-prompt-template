@@ -1,6 +1,11 @@
 # Use the official Python image as a parent image
 FROM python:3.9-slim
 
+# Update the package lists and install the required packages in one RUN command to keep the image size small
+RUN apt-get update && apt-get install -y \
+    xclip \
+    xvfb
+
 # Set the working directory in the container
 WORKDIR /apps
 
@@ -9,6 +14,8 @@ COPY . /apps
 
 # Install dependencies
 RUN pip install --no-cache-dir streamlit pyperclip
+ENV DISPLAY=:99
+RUN nohup bash -c "Xvfb :99 -screen 0 1280x720x16 &"
 
 # Expose the port where Streamlit will run
 EXPOSE 8502
