@@ -33,13 +33,6 @@ def app():
     template_bytes = template.encode()
     st.download_button(label='Generate and Download Prompt', data=template_bytes, file_name='prompt.txt', mime='text/plain')
 
-    if st.button('Auto-Copy Prompt'):
-        template = "Your generated prompt content here"
-
-        # Copy the template to clipboard
-        clip.copy(template)
-        st.success("Prompt copied to clipboard!")
-
 
 if __name__ == '__main__':
     app()

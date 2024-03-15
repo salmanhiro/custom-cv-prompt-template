@@ -13,9 +13,7 @@ WORKDIR /apps
 COPY . /apps
 
 # Install dependencies
-RUN pip install --no-cache-dir streamlit pyperclip
-ENV DISPLAY=:99
-RUN nohup bash -c "Xvfb :99 -screen 0 1280x720x16 &"
+RUN pip install --no-cache-dir streamlit
 
 # Expose the port where Streamlit will run
 EXPOSE 8502
