@@ -13,7 +13,7 @@ WORKDIR /apps
 COPY . /apps
 
 # Install dependencies
-RUN pip install --no-cache-dir streamlit
+RUN pip install --no-cache-dir streamlit pyperclip
 
 # Expose the port where Streamlit will run
 EXPOSE 8502
